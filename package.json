@@ -1,0 +1,15 @@
+{
+  "name": "sound",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "cevek <x.cevek@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "ts-loader": "^0.6.1",
+    "typescript": "^1.6.2"
+  }
+}
