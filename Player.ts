@@ -12,6 +12,7 @@ class Player {
     play = new Play(this.audioContext);
     spectrogram = new Spectrogram(512);
     canvas:HTMLCanvasElement;
+    ctx: CanvasRenderingContext2D;
     spectr:HTMLElement;
     audioSelDom:HTMLElement;
     currentTimeDOM:HTMLElement;
@@ -36,8 +37,7 @@ class Player {
         this.canvas.setAttribute('width', imd.width + '');
         this.canvas.setAttribute('height', imd.height + '');
         this.spectr.style.cssText = `width: ${imd.width / 2 }px; height: ${imd.height / 2 }px`;
-        var ctx = this.canvas.getContext('2d');
-        ctx.putImageData(imd, 0, 0);
+        this.ctx.putImageData(imd, 0, 0);
     }
 
     defaultLoad() {
@@ -64,6 +64,7 @@ class Player {
         this.currentTimeDOM = d('div', {className: 'currentTime'});
 
         this.canvas = <HTMLCanvasElement>d('canvas');
+        this.ctx = this.canvas.getContext('2d');
         this.spectr = d('div', {className: 'spectrogram'},
             this.audioSelDom,
             this.canvas,

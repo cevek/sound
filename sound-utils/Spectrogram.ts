@@ -44,6 +44,7 @@ export class Spectrogram {
     }
 
     process(audioBuffer:AudioBuffer) {
+        this.data = [];
         this.audioBuffer = audioBuffer;
         var bufferSize = this.fftSize;
         var fft = new FFT(bufferSize, 0);
