@@ -10,7 +10,7 @@ class Player {
     audioContext = new AudioContext();
     soundLoader = new SoundLoader(this.audioContext);
     play = new Play(this.audioContext);
-    spectrogram = new Spectrogram(512);
+    spectrogram = new Spectrogram(256);
     canvas:HTMLCanvasElement;
     ctx: CanvasRenderingContext2D;
     spectr:HTMLElement;
