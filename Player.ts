@@ -10,15 +10,17 @@ class Player {
     audioContext = new AudioContext();
     soundLoader = new SoundLoader(this.audioContext);
     play = new Play(this.audioContext);
-    spectrogram = new Spectrogram(256);
+    spectrogram = new Spectrogram(1024);
     canvas:HTMLCanvasElement;
-    ctx: CanvasRenderingContext2D;
+    ctx:CanvasRenderingContext2D;
     spectr:HTMLElement;
     audioSelDom:HTMLElement;
     currentTimeDOM:HTMLElement;
 
-    xKoef = 2;
-    yKoef = 2;
+    xKoef = 1;
+    yKoef = 1;
+
+    yShift = .9;
 
     constructor() {
         this.defaultLoad();
@@ -34,10 +36,12 @@ class Player {
     drawFFT(audioBuffer:AudioBuffer) {
         this.spectrogram.process(audioBuffer);
         var imd = this.spectrogram.getImageData();
+        var cutH = this.yShift * imd.height;
+        var height = imd.height - this.yShift * imd.height;
         this.canvas.setAttribute('width', imd.width + '');
-        this.canvas.setAttribute('height', imd.height + '');
-        this.spectr.style.cssText = `width: ${imd.width / 2 }px; height: ${imd.height / 2 }px`;
-        this.ctx.putImageData(imd, 0, 0);
+        this.canvas.setAttribute('height', height + '');
+        this.spectr.style.cssText = `width: ${imd.width / this.xKoef }px; height: ${height / this.yKoef }px`;
+        this.ctx.putImageData(imd, 0, -cutH);
     }
 
     defaultLoad() {
