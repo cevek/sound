@@ -4,14 +4,15 @@
     "target": "es5",
     "noImplicitAny": true,
     "rootDir": ".",
-    "sourceMap": false,
+    "sourceMap": true,
+    "noEmit": true,
     "noLib": true
   },
   "exclude": [
     "node_modules"
   ],
   "files": [
-    "./lib.es6.d.ts",
+    "./typings/lib.es6.d.ts",
     "./Player.ts"
   ]
 }
