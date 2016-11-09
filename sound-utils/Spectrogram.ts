@@ -1,6 +1,6 @@
 import {FFT} from "./FFT";
 export class Spectrogram {
-    private data:Uint16Array[] = [];
+    private data:Uint8ClampedArray[] = [];
     private audioBuffer:AudioBuffer;
 
     constructor(public fftSize:number) {

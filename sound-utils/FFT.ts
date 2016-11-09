@@ -1,5 +1,4 @@
 const TWO_PI = 2 * Math.PI;
-type Buff = {[i:number]: number; length: number};
 
 /**
  * FFT is a class for calculating the Discrete Fourier Transform of a signal
@@ -104,7 +103,7 @@ export class FFT {
      *
      * @returns The frequency spectrum array
      */
-    public forward(buffer:Buff) {
+    public forward(buffer:Float32Array) {
         // Locally scope variables for speed up
         var bufferSize   = this.bufferSize,
             cosTable     = this.cosTable,
@@ -242,7 +241,7 @@ class WindowFunction {
         }
     }
 
-    process(buffer:Buff) {
+    process(buffer:number[]) {
         var length = buffer.length;
         for (var i = 0; i < length; i++) {
             buffer[i] *= this.func(length, i, this.alpha);
